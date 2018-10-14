@@ -1,0 +1,61 @@
+# depslib dependency file v1.0
+1492604445 source:e:\documents\code\aesurf\block.cpp
+	"BLOCK.hpp"
+	<iostream>
+	<cstdio>
+	<cstdlib>
+
+1492604457 e:\documents\code\aesurf\block.hpp
+	"POINT.hpp"
+
+1492604348 e:\documents\code\aesurf\point.hpp
+
+1492604484 source:e:\documents\code\aesurf\point.cpp
+	"POINT.hpp"
+	<cstdio>
+
+1492657799 source:e:\documents\code\aesurf\main.cpp
+	"BLOCK.hpp"
+	<cstdio>
+	<iostream>
+
+1492604445 source:e:\documents\code\c++\aesurf\block.cpp
+	"BLOCK.hpp"
+	<iostream>
+	<cstdio>
+	<cstdlib>
+
+1492604457 e:\documents\code\c++\aesurf\block.hpp
+	"POINT.hpp"
+
+1492604348 e:\documents\code\c++\aesurf\point.hpp
+
+1492604484 source:e:\documents\code\c++\aesurf\point.cpp
+	"POINT.hpp"
+	<cstdio>
+
+1504672311 source:e:\documents\code\c++\aesurf\main.cpp
+	"BLOCK.hpp"
+	<cstdio>
+	<iostream>
+
+1534905493 source:e:\documents\code\cpp\aesurf\block.cpp
+	"BLOCK.hpp"
+	<iostream>
+	<cstdio>
+	<cstdlib>
+
+1534905213 e:\documents\code\cpp\aesurf\block.hpp
+	"POINT.hpp"
+
+1534905141 e:\documents\code\cpp\aesurf\point.hpp
+
+1535186728 source:e:\documents\code\cpp\aesurf\point.cpp
+	"POINT.hpp"
+	<cstdio>
+
+1535186030 source:e:\documents\code\cpp\aesurf\main.cpp
+	"BLOCK.hpp"
+	<cstdio>
+	<iostream>
+
