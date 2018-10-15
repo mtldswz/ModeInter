@@ -135,4 +135,3 @@ class FluentMesh(CFDMesh):
 if __name__ == "__main__":
     cfl3dmesh = Plot3dMesh("")
     cfl3dmesh.getwall()
-123
