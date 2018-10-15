@@ -1,9 +1,7 @@
-#
+#!/usr/bin/env python
 # -*-coding: utf-8-*-
 
 import Point
-import CSDMesh
-
 
 class CFDMesh(object):
 
@@ -30,14 +28,11 @@ class Plot3dMesh(CFDMesh):
     def check(self, line):
         if len(line) != 3:
             return False
-
         for ic in line:
-
             try:
                 float(ic)
             except:
                 return False
-
         return True
 
     def add_point(self, x, y, z):
@@ -45,93 +40,44 @@ class Plot3dMesh(CFDMesh):
         self.listpoint.append(point)
 
     def get_point_list(self):
-
-        res = []
-
         with open("wall.dat", "r") as fp:
-
-            last = False
-
             while True:
                 line = fp.readline()
-
-                # print(line)
-
                 if not line:
                     break
-
-                # os.system("pause")
-
                 line = line.strip("\n")
                 line = line.strip(" ")
-
-                line = line.split(" ")
-
-                # print(line)
-
-                flag = self.check(line)
-
-                if flag:
-                    # print("yes")
+                line = line.split()
+                if self.check(line):
                     self.add_point(line)
-                    if not last:
-                        res.append(1)
-                    else:
-                        # print(len(res))
-                        res[-1] += 1
-                last = flag
-
-        return res
 
     def getwall(self):
-
-        res = []
-        lastnum = -1
         with open("wallinfo.dat", "r") as fp:
-
+            lastnum = -1
             while True:
-
                 line = fp.readline()
-
                 line = line.strip("\n")
                 line = line.strip(" ")
 
-                line = line.split()
-
-                print(line)
-
                 if not line:
                     break
-                if res == [] or  line[0] != lastnum:
-                    res.append(1)
+                line = line.split()
+                dim = (int(line[4]) - int(line[3]) + 1) * (int(line[6]) - int(line[5]) + 1)
+                if self.block_dim == [] or line[0] != lastnum:
+                    self.block_dim.append(dim)
                 else:
-                    res[-1] += 1
-
+                    self.block_dim[-1] += dim
                 lastnum = line[0]
 
 
-        print(len(res))
-
-        return res
-
-    def read_input_data(self):
-
-        listb = self.get_point_list()
-        list = self.getwall()
-
-        st = 0
-        for i in list:
-            tmp = sum(listb[st:st + int(i)])
-            self.block_dim.append(tmp)
-            st += int(i)
-
-
 class FluentMesh(CFDMesh):
-
     pass
-
 
 
 if __name__ == "__main__":
     cfl3dmesh = Plot3dMesh("")
     cfl3dmesh.getwall()
+    fd = open("dim.dat", "w")
+    print(len(cfl3dmesh.block_dim))
+    for i in cfl3dmesh.block_dim:
+        print(i, file=fd)
