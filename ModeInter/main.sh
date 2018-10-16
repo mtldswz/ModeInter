@@ -14,7 +14,6 @@ retcode=$?
 import CFDMesh
 import InterWorker
 import Get3DModeShape
-import Point
 
 if __name__ == "__main__":
     cfl3dmesh = CFDMesh.Plot3dMesh()
