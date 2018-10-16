@@ -1,6 +1,8 @@
 # -*- coding:utf-8 -*-
 
 import Point
+import sys
+
 
 class Bolck():
     def __init__(self, n_mode, blockdim):
@@ -17,14 +19,14 @@ class Bolck():
         for index in range(self.n_mode):
             self.modeshapelist[index].append(pointlist[index + 1])
 
-    def write_data(self, fp):
-        print(self.n_mode, self.blockdim)
+    def write_data(self, file=None):
+        # print(self.n_mode, self.blockdim)
         for mode in range(self.n_mode):
             for index in range(self.blockdim):
-                self.modeshapelist[mode][index].write_data(fp)
+                self.modeshapelist[mode][index].write_data(file)
 
 
-class Get3DModeShape():
+class Get3DModeShape(object):
 
     def __init__(self, n_mode, filedim="dim.dat", filemodeshape="mode_in.dat"):
         super(Get3DModeShape, self).__init__()
@@ -70,7 +72,7 @@ class Get3DModeShape():
     def write_data(self):
         with open("aesurf.dat", "w") as fp:
             for block in self.blocklist:
-                block.write_data(fp)
+                block.write_data(file=fp)
 
     def run(self):
         self.read_data()
