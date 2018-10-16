@@ -12,14 +12,14 @@ retcode=$?
 # -*- coding:utf-8 -*-
 
 import CFDMesh
-import InterWorkr
+import InterWorker
 import Get3DModeShape
 import Point
 
 if __name__ == "__main__":
-    cfl3dmesh = CFDMesh.Plot3DMesh()
+    cfl3dmesh = CFDMesh.Plot3dMesh()
     cfl3dmesh.run()
-    rbfworker = InterWorkr.MockRBFMethod()
+    rbfworker = InterWorker.MockRBFMethod()
     n_mode = rbfworker.run()
-    get3d = Get3DModeShape(n_mode)
+    get3d = Get3DModeShape.Get3DModeShape(n_mode)
     get3d.run()
