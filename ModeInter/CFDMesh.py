@@ -7,7 +7,7 @@ import Point
 
 class CFDMesh(object):
 
-    def __init__(self, filename=" "):
+    def __init__(self, filename=""):
 
         self.filename = filename
         self.listpoint = []
@@ -18,7 +18,7 @@ class CFDMesh(object):
 
 class Plot3dMesh(CFDMesh):
 
-    def __init__(self, filename):
+    def __init__(self, filename=""):
         super(Plot3dMesh, self).__init__(filename)
         self.block_dim = []
 
@@ -84,7 +84,7 @@ class FluentMesh(CFDMesh):
 
 
 if __name__ == "__main__":
-    cfl3dmesh = Plot3dMesh(filename="")
+    cfl3dmesh = Plot3dMesh()
     cfl3dmesh.run()
     fd = open("dim.dat", "w")
     print(len(cfl3dmesh.block_dim))
