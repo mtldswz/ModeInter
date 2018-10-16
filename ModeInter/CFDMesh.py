@@ -7,7 +7,7 @@ import Point
 
 class CFDMesh(object):
 
-    def __init__(self, filename):
+    def __init__(self, filename=" "):
 
         self.filename = filename
         self.listpoint = []
@@ -34,15 +34,15 @@ class Plot3dMesh(CFDMesh):
 
     def get_block_info(self):
         cmd = "cat cfl3d.inp | grep '1005\|2004' | sort -n > wallinfo.dat"
-        p = subprocess.Popen(cmd, shell=True)
-        p.wait()
+        subprocess.call(cmd, shell=True)
+        # p.wait()
         self.get_block_dim()
-        cmd = "rm wallinfo.dat"
-        p = subprocess.Popen(cmd, shell=True)
-        p.wait()
+        # cmd = "rm wallinfo.dat"
+        # subprocess.call(cmd, shell=True)
+        # p.wait()
 
-    def add_point(self, x, y, z):
-        point = Point.ModeShape(x, y, z)
+    def add_point(self, line):
+        point = Point.ModeShape(line[0], line[1], line[2])
         self.listpoint.append(point)
 
     def get_point_list(self):
@@ -51,8 +51,8 @@ class Plot3dMesh(CFDMesh):
                 line = fp.readline()
                 if not line:
                     break
-                line = line.strip("\n")
-                line = line.strip(" ")
+                # line = line.strip("\n")
+                # line = line.strip(" ")
                 line = line.split()
                 if self.check(line):
                     self.add_point(line)
@@ -84,7 +84,7 @@ class FluentMesh(CFDMesh):
 
 
 if __name__ == "__main__":
-    cfl3dmesh = Plot3dMesh("")
+    cfl3dmesh = Plot3dMesh(filename="")
     cfl3dmesh.run()
     fd = open("dim.dat", "w")
     print(len(cfl3dmesh.block_dim))
